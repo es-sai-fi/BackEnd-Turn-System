@@ -19,7 +19,7 @@ SECRET_KEY = 'django-insecure-i+n%rdfw-+$esvy3e@0r^5y&9y8^m!iqj75%!7-9!=j@#biw(x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG', default=True)
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['backend-turn-system.onrender.com']
 
 
 # Application definition
@@ -155,7 +155,10 @@ if not DEBUG:
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOW_ALL_ORIGINS = True # Borrar luego
+CORS_ALLOWED_ORIGINS = [
+    "https://front-end-turn-system.vercel.app",
+]
+
 LOGIN_RATE_LIMIT = '5/m'           
 LOGIN_FAILS_LIMIT = 5                  
 LOGIN_FAILS_TIMEOUT = 300
