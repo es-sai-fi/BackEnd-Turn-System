@@ -102,7 +102,7 @@ class UserPlacesDetailAPIView(APIView):
 
 
 class AddUserToPlaceAPIView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsAdminRole]
     
     def get_place(self, pid):
         return Place.objects.filter(place_id=pid).first()
