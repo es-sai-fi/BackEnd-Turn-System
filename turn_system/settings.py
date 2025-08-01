@@ -155,3 +155,6 @@ if not DEBUG:
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_ALL_ORIGINS = True # Borrar luego
+LOGIN_RATE_LIMIT = '5/m'           
+LOGIN_FAILS_LIMIT = 5                  
+LOGIN_FAILS_TIMEOUT = 300
