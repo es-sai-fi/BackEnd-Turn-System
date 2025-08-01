@@ -105,7 +105,7 @@ class AddUserToPlaceAPIView(APIView):
     permission_classes = [IsAuthenticated, IsAdminRole]
     
     def get_place(self, pid):
-        return CustomUser.objects.filter(place_id=pid).first()
+        return Place.objects.filter(place_id=pid).first()
     
     def get_user(self, uid):
         return CustomUser.objects.filter(id=uid).first()
