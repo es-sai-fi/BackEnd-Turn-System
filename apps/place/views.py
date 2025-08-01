@@ -41,7 +41,7 @@ class PlaceDetailAPIView(APIView):
         elif self.request.method == 'PUT':
             return [IsAuthenticated(), IsAdminRole()]
         elif self.request.method == 'DELETE':
-            return [IsAuthenticated()]
+            return [IsAuthenticated(), IsAdminRole()]
         return super().get_permissions()
     
     def get_place(self, pid):
