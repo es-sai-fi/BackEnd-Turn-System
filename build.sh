@@ -10,6 +10,3 @@ python manage.py collectstatic --no-input
 
 # Apply any outstanding database migrations
 python manage.py migrate
-
-# Create superuser
-python manage.py customsuperuser --email dylan@gmail.com --password 12345678 --name Dylan --last_name Morales --role_id 1
