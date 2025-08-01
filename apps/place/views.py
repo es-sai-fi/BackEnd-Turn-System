@@ -7,6 +7,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from ..custom_user.models import CustomUser
 from ..custom_user.authentication_mixin import IsUserRole,IsAdminRole,IsWorkerRole
+from ..service.models import Service
 from .models import Place, PlaceCustomUser
 
 
@@ -46,6 +47,9 @@ class PlaceDetailAPIView(APIView):
     
     def get_place(self, pid):
         return Place.objects.filter(place_id=pid).first()
+
+    def get_service(self, sid):
+        return Service.objects.filter(service_id=sid).first()
     
     def get(self, request, pid):
         place = self.get_place(pid)
@@ -74,6 +78,8 @@ class PlaceDetailAPIView(APIView):
         place = self.get_place(pid)
 
         if place:
+            service = self.get_service(place.service_id)
+            service.delete()
             place.delete()
 
             return Response({'message': 'Punto Eliminado.'}, status=status.HTTP_200_OK)
