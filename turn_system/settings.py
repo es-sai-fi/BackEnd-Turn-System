@@ -98,30 +98,10 @@ WSGI_APPLICATION = 'turn_system.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'turn_system',
-        'USER': 'postgres',
-        'PASSWORD': 'aP4sw0rd',
-        'HOST': 'localhost',
-        'PORT': '5433',
-        'OPTIONS': {
-            'options': '-c client_encoding=UTF8',
-        },
-    }
-}
-
-'''DATABASES = {
     'default': dj_database_url.config(
         default=env('DATABASE_URL')
     )
-}'''
-
-CORS_ALLOW_CREDENTIALS = True
-'''CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "https://mi-frontend.com",
-]'''
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
