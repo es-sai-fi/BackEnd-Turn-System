@@ -17,7 +17,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = 'django-insecure-i+n%rdfw-+$esvy3e@0r^5y&9y8^m!iqj75%!7-9!=j@#biw(x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG', default=True)
+DEBUG = env('DEBUG', default=False)
 
 ALLOWED_HOSTS = ['backend-turn-system.onrender.com']
 
