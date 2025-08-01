@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'apps.place',
     'apps.turn',
     'apps.service',
+    'rest_framework_simplejwt.token_blacklist',
 ]
 
 AUTH_USER_MODEL = 'custom_user.CustomUser'
