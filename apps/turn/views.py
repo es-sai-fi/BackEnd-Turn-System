@@ -9,6 +9,7 @@ from datetime import timedelta
 from ..custom_user.models import CustomUser
 from .models import Turn
 from ..place.models import Place
+from ..custom_user.authentication_mixin import IsUserRole, IsWorkerRole
 from .serializers import TurnSerializer, CreateTurnSerializer
 
 
@@ -85,7 +86,7 @@ class UserActiveTurnAPIView(APIView):
 
 
 class CloseTurnAPIView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsWorkerRole]
     
     def get_turn(self, tid):
         return Turn.objects.filter(turn_id=tid).first()
@@ -189,7 +190,8 @@ class TurnAPIView(APIView):
 
 
 class NextTurnAPIView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsWorkerRole]
+    
     def get_place(self, pid):
         return Place.objects.filter(place_id=pid).first()
 
