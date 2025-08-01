@@ -89,7 +89,7 @@ class UserPlacesDetailAPIView(APIView):
 
     def get_user(self, uid):
         return CustomUser.objects.filter(id=uid).first()
-    
+        
     def get(self, request, uid):
         user = self.get_user(uid)
         if not user:
@@ -100,8 +100,20 @@ class UserPlacesDetailAPIView(APIView):
 
         return Response(serializer.data, status=status.HTTP_200_OK)
 
+
+class AddUserToPlaceAPIView(APIView):
+    permission_classes = [IsAuthenticated, IsAdminRole]
+    
+    def get_place(self, pid):
+        return Place.objects.filter(place_id=pid).first()
+    
+    def get_user(self, uid):
+        return CustomUser.objects.filter(id=uid).first()
+    
     def post(self, request, uid, pid):
+        data = {"custom_user_id":uid, "place_id":pid}
         exists = PlaceCustomUser.objects.filter(custom_user_id=uid, place_id=pid).exists()
+        
         if exists:
             return Response({"message": "Este usuario ya está asignado a este lugar."}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -110,6 +122,7 @@ class UserPlacesDetailAPIView(APIView):
 
         if serializer.is_valid():
             serializer.save()
+
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
