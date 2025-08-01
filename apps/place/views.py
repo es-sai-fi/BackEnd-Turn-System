@@ -92,6 +92,7 @@ class UserPlacesDetailAPIView(APIView):
         
     def get(self, request, uid):
         user = self.get_user(uid)
+        
         if not user:
             return Response({'message:' 'Usuario no encontrado.'}, status=status.HTTP_404_NOT_FOUND)
 
